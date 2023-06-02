@@ -7,7 +7,7 @@ class StoresController < ApplicationController
   
   def show 
    @store = Store.find(params[:id])
-   @categories = @store.categories 
+  #  @categories = @store.categories 
   end 
   
   def new 
