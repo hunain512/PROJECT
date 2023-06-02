@@ -1,0 +1,6 @@
+var cardElement = $(".cart-results").find(`[data-item-id='<%= @item.id %>']`);
+console.log(cardElement);
+var quantityElement = cardElement.find("p.quantity");
+quantityElement.html("<%= @cart_item %>");
+$("#total-price").html("Total Price: <%= @total_price %>");
+

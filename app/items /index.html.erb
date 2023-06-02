@@ -1,0 +1,13 @@
+
+<%@items.each do |item|%>
+ <div class="card">
+  <img src="jeans3.jpg" alt="Denim Jeans" style="width:100%">
+  <h1><%= item.name %></h1>
+  <p class="price"><%= item.price %></p>
+  <p><%= link_to "show items", item_path(item)%></p>
+  <p><%= link_to "edit items", edit_item_path(item)%></p>
+  <p><%= link_to "delete items", item_path(item), method: :delete%></p>
+
+ </div> 
+  <br>
+<% end %>  

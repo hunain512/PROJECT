@@ -1,0 +1,35 @@
+<div class="card">
+  <img src="jeans3.jpg" alt="Denim Jeans" style="width:100%">
+  <h1>Tailored Jeans</h1>
+  <p class="price"><%= @store.name%></p>
+  <p><%= link_to "edit store", edit_store_path(@store)%></p>
+</div> 
+
+<div class="contain">
+  <div class="categories">
+      <% @categories.each do |category| %>
+        <div class="category-name"> Category: <%= category.name %></div>
+        <div class="items-container">
+        <%category.items.each do |item|%>
+          <div class="grid">
+            <div class="item"><p>
+             <%= item.name %></p>
+             <p>$<%= item.price %></p>
+            <%= link_to "add to cart", add_item_to_cart_path(item_id: item.id, store_id: @store.id), method: :post, remote: true  %> 
+            <br>
+            </div>
+          </div>
+        <%end %>  
+        </div>
+      <% end %> 
+  </div>
+  <div class="cart">
+    <h2>Shopping Cart</h2>
+    <ul>
+    <div class="cart-results">
+    </div>  
+    <div id="total-price">
+    Total Price: <%= @total_price %>
+  </div>   
+  </div>
+</div>

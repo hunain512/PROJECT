@@ -1,0 +1,20 @@
+# app/views/orders/show.html.erb
+<h1>Order Details</h1>
+
+<ul>
+ <div class="container">
+  <p>Order ID: <%= @order.id %></p>
+  <p>Store: <%= @order.store.name %></p>
+  <% @order.cart.cart_items.each do |cart_item| %> 
+    <div class="card">
+    <img src="jeans3.jpg" alt="Denim Jeans" style="width:100%">
+    <h1>Item Name <%= cart_item.item.name%></h1>
+    <p class="price">Price: <%= cart_item.item.price%></p>
+    <p class="price">Quantity<%= cart_item.quantity%></p>
+    </div> 
+  <% end %>
+ </div>
+ TOTAL PRICE<%= @order.total %> 
+</ul>
+
+<%= link_to "root path", root_path %>

@@ -1,0 +1,13 @@
+<% @cart_items.each do |cart_item| %>
+  <div class="card" data-item-id="<%= cart_item.item.id %>">
+    <div class="d-flex justify-content-between align-items-center p-3">
+      <p class="card-text"><%= cart_item.item.name %></p>
+      <p class="price"><%= cart_item.item.price %></p>
+      <p class="quantity"><%= cart_item.quantity %></p>
+      <%= link_to " + ", increase_item_quantity_path(item_id: cart_item.item.id, store_id: cart_item.item.category.store.id), method: :post, remote: true %>
+      <%= link_to " - ", decrease_item_quantity_path(item_id: cart_item.item.id, store_id: cart_item.item.category.store.id), method: :post, remote: true %>
+      <%= link_to 'Remove', remove_item_from_cart_path(item_id: cart_item.item.id, store_id: cart_item.item.category.store.id), method: :delete, remote: true %>
+    </div>
+  </div>
+<% end %>
+<%= link_to 'Checkout', checkout_path(store_id: @store.id), method: :post %>

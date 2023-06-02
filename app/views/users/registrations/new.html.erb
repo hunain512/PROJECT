@@ -1,0 +1,36 @@
+<h2>Sign up</h2>
+<div class="container">
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+  <%= render "users/shared/error_messages", resource: resource %>
+
+  <div class="field">
+    <%= f.label :email %><br />
+    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :password %>
+    <% if @minimum_password_length %>
+    <em>(<%= @minimum_password_length %> characters minimum)</em>
+    <% end %><br />
+    <%= f.password_field :password, autocomplete: "new-password" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :password_confirmation %><br />
+    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+  </div>
+
+  <div class="field">
+      <%= f.label :User, class: " col-form-label text-light" %>
+      <div class="col-10 col-form-label"> 
+      <%= f.collection_select(:store_ids, Store.all, :id, :name, {prompt: "Make your selection from the list below (can be empty)"}, {multiple: true, size: 4, class: "form-select shadow rounded"}) %>
+      </div>
+  </div>
+<br>
+  <div class="actions">
+    <%= f.submit "createuser" %>
+  </div>
+<% end %>
+</div>
+
